@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Permanent+Marker" />
+		<title>HW4</title>
+		<meta charset="utf-8"/>
+	</head>
+	<body ng-controller="MainController">
+		<div class="row">
+			<header class="marker">
+				<h1>CMPS 183: Homework 4</h1>
+			</header>
+		</div>
+		<div class="row">
+			<div class="navbar white marker">
+				<ul>
+					<li><a href="/index">Home</a></li>
+					<li><a href="/list">To Do</a></li>
+					<li><a href="/new">To Do Form</a></li>
+				</ul>
+			</div>
+		</div>
+			<div class="row main-body">
+				<div class="col-sm-9">
+					<div class="row">
+						<div class="col-sm-4 info" style="padding-top: 40px; padding-left: 40px;">
+							<h1 class="underlined marker text-center" style="font-size: 35px;">General Info</h1>
+							<ul>
+								<li>Name: Peter Parker</li>
+								<li>Place of Birth: Forest Hills, New York</li>
+								<li>Date of Birth: 1962</li>
+								<li>Email: definitelynotspiderman@gmail.com</li>
+								<li>Phone: 867-5309</li>
+							</ul>
+						</div>
+						<div class="col-sm-4"  style="padding-top: 20px;">
+							<img src="images/spidey.png" class="profile-pic">
+						</div>
+						<div class="col-sm-4 info"  style="padding-top: 40px; padding-right: 40px;">
+							<h3 class="underlined marker text-center" style="font-size: 35px;">About Me</h3>
+							<p style="text-indent: 30px;">
+								Hi, my name is Peter Parker. I am 15 years old and I attend Midtown High School in New York City. I live with my Aunt May, but my Uncle passed away recently. I really seem to have a knack for science in school. I even build cool gadgets in my free time! One intersting fact about me is that I am good friends with Spider-Man, but I am definitely not Spider-Man.
+							</p>
+						</div>
+					</div>
+					<div class="row">
+						<h1 class="text-center marker" style="padding-top: 20px;">Coursework</h1>
+						<table class="course" style="margin: 0px auto;"> 
+							<tr>
+								<th>Course Number</th>
+								<th>Course Title</th>
+								<th>Department</th>
+								<th>Quarter</th>
+							</tr>
+							<tr ng-repeat="course in courses">
+								<td ng-bind="course.number"></td>
+								<td ng-bind="course.title"></td>
+								<td ng-bind="course.dept"></td>
+								<td ng-bind="course.quarter"></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="col-sm-3 sidenav">
+					<h2 class="text-center marker underlined">Resources</h2><br>
+					<ol style="padding-right:30px;">
+						<li>I am using simple bootstrap columns to format this page along with some CSS</li> <br>
+						<li>The <a href="https://www.cssfontstack.com/Permanent-Marker">font</a> I'm using</li> <br>
+						<li><a href="https://www.w3schools.com/colors/colors_picker.asp">Color picker</a></li>
+					</ol>
+				</div>
+			</div>
+		<div class="row">
+			<footer class="footer">
+				<div class="footer-navbar white">
+					<ul>
+						<li><a href="#">About Us</a></li>
+						<li><a href="#">Privacy</a></li>
+						<li><a href="#">Credits</a></li>
+						<li><a href="#">Contact Us</a></li>
+					</ul>
+				</div>
+			</footer>
+		</div>
+	</body>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+		<script src="scripts/controller.js"></script>
+</html>

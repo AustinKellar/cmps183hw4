@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Permanent+Marker" />
+		<title>HW4</title>
+		<meta charset="utf-8"/>
+	</head>
+	<body ng-controller="MainController">
+		<div class="row">
+			<header class="marker">
+				<h1>CMPS 183: Homework 4</h1>
+			</header>
+		</div>
+		<div class="row">
+			<div class="navbar white marker">
+				<ul>
+					<li><a href="/index">Home</a></li>
+					<li><a href="/list">To Do</a></li>
+					<li><a href="/new">To Do Form</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="main-body" ng-init="todoInit()">
+			<div class="col-sm-10 todo" style="padding-top: 20px;">
+				<div class="col-sm-12">
+					<h2 class="text-center marker">To Do List</h2>
+					<table style="margin: auto; display: block;">
+						<tr>
+							<th>Task Title</th>
+							<th>Notes</th>
+							<th>Posted</th>
+							<th>Last Updated</th>
+							<th>Due Date</th>
+							<th>Completed</th>
+							<th>Edit</th>
+							<th>Delete</th>
+						</tr>
+						<tr ng-repeat="todo in todos | orderObjectBy:orderBy:false track by $index">
+							<td ng-if="todo.visible"><textarea ng-model="todo.title" ng-disabled="!todo.edit"></textarea></td>
+							<td ng-if="todo.visible"><textarea ng-model="todo.notes" ng-disabled="!todo.edit"></textarea></td>
+							<td ng-if="todo.visible"><input type="date" ng-model="todo.posted" ng-disabled="!todo.edit"></td>
+							<td ng-if="todo.visible"><input type="date" ng-model="todo.lastUpdated" disabled="disabled"></td>
+							<td ng-if="todo.visible"><input type="date" ng-model="todo.due" ng-disabled="!todo.edit"></td>
+							<td ng-if="todo.visible"><input type="checkbox" ng-model="todo.completed" ng-click="check(todo.id)" style="display:block; margin:auto;"></td>
+							<td ng-if="todo.visible"><button ng-click="edit(todo.id, todo.buttonText)" class="marker">{{todo.buttonText}}</button></td>
+							<td ng-if="todo.visible"><button ng-click="delete(todo.id)" class="marker">Delete</button></td>
+						</tr>
+						<tr>
+							<td>
+								<select ng-model="filter" ng-change="filterTable()">
+									<option value="Show All">Show: All</option>
+									<option value="Show Completed">Show: Completed</option>
+									<option value="Show To Do">Show: To Do</option>
+								</select>
+							</td>
+							<td>
+								<select ng-model="sortBy" ng-change="changeSort()">
+									<option value="posted">Sort By: Posted</option>
+									<option value="lastUpdated">Sort By: Last Updated</option>
+									<option value="due">Sort By: Due</option>
+								</select>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="col-sm-2 sidenav">
+				<h2 class="text-center marker underlined">Resources</h2><br>
+				<ol style="padding-right:30px;">
+					<li>
+						How to create a custom AngularJS filter for <a href="https://stackoverflow.com/questions/14478106/angularjs-sorting-by-property">order by</a>
+						table attribute
+					</li><br>
+					<li>
+						How to use <a href="https://www.w3schools.com/angular/ng_ng-disabled.asp">ng-disabled</a>
+						to disable textareas conditionally
+					</li>
+				</ol>
+			</div>
+		</div>
+		<div class="row">
+			<footer class="footer">
+				<div class="footer-navbar white">
+					<ul>
+						<li><a href="#">About Us</a></li>
+						<li><a href="#">Privacy</a></li>
+						<li><a href="#">Credits</a></li>
+						<li><a href="#">Contact Us</a></li>
+					</ul>
+				</div>
+			</footer>
+		</div>
+	</body>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+		<script src="scripts/controller.js"></script>
+</html>
